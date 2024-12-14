@@ -53,7 +53,7 @@ export default function MobileMenu() {
             <div className="fixed inset-y-0 right-0 w-full max-w-sm bg-white p-6 shadow-xl">
               <div className="flex items-center justify-between">
                 <img
-                  src="/fulllogo.png"
+                  src="/logo-banner.png"
                   alt="Project Tech"
                   className="h-8 w-auto"
                 />
