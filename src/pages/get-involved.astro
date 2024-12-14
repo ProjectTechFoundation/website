@@ -1,0 +1,20 @@
+---
+import Layout from '../layouts/Layout.astro';
+import VolunteerForm from '../components/get-involved/VolunteerForm.astro';
+import DonationOptions from '../components/get-involved/DonationOptions.astro';
+
+// Access the current URL
+const currentUrl = Astro.url;
+const showDonationOptions = currentUrl.hash === '#donate';
+---
+
+<Layout title="Get Involved">
+  {showDonationOptions ? (
+    <DonationOptions />
+  ) : (
+    <>
+      <VolunteerForm />
+      <DonationOptions />
+    </>
+  )}
+</Layout>

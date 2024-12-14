@@ -1,0 +1,63 @@
+---
+import Header from '../components/navigation/Header.astro';
+import Footer from '../components/navigation/Footer.astro';
+
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+  <!-- Basic Meta Tags -->
+  <title>{title ? `${title} - Project Tech` : 'Project Tech'}</title>
+  <meta charset="UTF-8">
+  <meta name="description" content="The Project Tech Foundation is a non-profit organization that bridges the digital divide through free computer science education, offering courses, resources, and tools to global students." />
+  <meta name="keywords" content="Project Tech, Digital Divide, Technology Education, Non-Profit, Computer Science, Free Courses, Global Impact" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#1989F4" />
+
+  <!-- Open Graph (OG) for Social Media (Discord, Facebook, etc.) -->
+  <meta property="og:title" content="Project Tech Foundation" />
+  <meta property="og:description" content="Bridging the digital divide through free technology education. Join us to make a difference!" />
+  <meta property="og:image" content="/images/website-banner.png" />
+  <meta property="og:url" content="https://project-tech.org" />
+  <meta property="og:type" content="website" />
+  
+  <!-- Twitter Cards -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Project Tech Foundation" />
+  <meta name="twitter:description" content="Bridging the digital divide through free technology education. Join us to make a difference!" />
+  <meta name="twitter:image" content="/images/website-banner.png" />
+  
+  <!-- Favicon -->
+  <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+
+  <!-- Styles or Fonts (optional, for consistency in embeds) -->
+  <link rel="stylesheet" href="/styles/global.css" />
+</head>
+
+
+  <body class="min-h-screen flex flex-col">
+    <Header />
+    <main class="flex-grow">
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>
+
+<style is:global>
+  :root {
+    --font-inter: 'Inter', sans-serif;
+  }
+  html {
+    font-family: var(--font-inter);
+    scroll-behavior: smooth;
+  }
+
+  
+</style>

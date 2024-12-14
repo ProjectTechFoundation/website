@@ -1,0 +1,17 @@
+---
+import Logo from './Logo.astro';
+import MobileMenu from './MobileMenu';
+import NavLinks from './NavLinks.astro';
+---
+
+<header class="fixed w-full bg-white/95 backdrop-blur-sm shadow-sm z-50">
+  <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between h-16">
+      <Logo />
+      <NavLinks />
+      <div class="flex items-center md:hidden">
+        <MobileMenu client:load />
+      </div>
+    </div>
+  </nav>
+</header>

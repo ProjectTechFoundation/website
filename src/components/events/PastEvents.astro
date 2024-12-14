@@ -1,0 +1,41 @@
+---
+const pastEvents = [
+  {
+    title: "Youth Coding Camp",
+    date: "2024-02-15",
+    participants: 25,
+    impact: "Introduced programming concepts to local youth"
+  },
+  {
+    title: "Senior Tech Workshop",
+    date: "2024-02-01",
+    participants: 30,
+    impact: "Helped seniors master essential digital skills"
+  },
+  {
+    title: "Device Distribution",
+    date: "2024-01-15",
+    participants: 50,
+    impact: "Provided refurbished computers to families in need"
+  }
+];
+---
+
+<section class="py-20 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center">
+      <h2 class="text-3xl font-extrabold text-gray-900">Past Events</h2>
+      <p class="mt-4 text-xl text-gray-600">Our recent impact in the community</p>
+    </div>
+    <div class="mt-16 grid grid-cols-1 gap-8 md:grid-cols-3">
+      {pastEvents.map(event => (
+        <div class="bg-gray-50 rounded-lg p-6">
+          <h3 class="text-xl font-bold text-gray-900">{event.title}</h3>
+          <p class="mt-2 text-gray-500">{new Date(event.date).toLocaleDateString()}</p>
+          <p class="mt-4 text-gray-600">{event.impact}</p>
+          <p class="mt-2 text-sm text-primary">{event.participants} participants</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,37 @@
+---
+const values = [
+  {
+    title: "Inclusivity",
+    description: "Technology should be accessible to everyone, regardless of background or circumstances."
+  },
+  {
+    title: "Education",
+    description: "Knowledge empowers individuals to achieve their full potential in the digital age."
+  },
+  {
+    title: "Community",
+    description: "Strong communities are built through collaboration and mutual support."
+  },
+  {
+    title: "Innovation",
+    description: "Embracing new technologies to create positive change in our communities."
+  }
+];
+---
+
+<section class="py-20 bg-gray-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center">
+      <h2 class="text-3xl font-extrabold text-gray-900 sm:text-4xl">Our Values</h2>
+      <p class="mt-4 text-xl text-gray-600">The principles that guide our mission</p>
+    </div>
+    <div class="mt-16 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
+      {values.map(value => (
+        <div class="bg-white rounded-lg shadow-sm p-8 transform hover:scale-105 transition-transform duration-200">
+          <h3 class="text-xl font-bold text-gray-900">{value.title}</h3>
+          <p class="mt-4 text-gray-600">{value.description}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

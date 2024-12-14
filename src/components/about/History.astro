@@ -1,0 +1,53 @@
+<!-- ---
+const milestones = [
+  {
+    year: "2018",
+    title: "Foundation",
+    description: "Project Tech was founded with a mission to bridge the digital divide."
+  },
+  {
+    year: "2019",
+    title: "First Programs",
+    description: "Launched our first coding workshops and device donation program."
+  },
+  {
+    year: "2020",
+    title: "Digital Response",
+    description: "Expanded online learning initiatives to support remote education."
+  },
+  {
+    year: "2021",
+    title: "Growth",
+    description: "Reached 1,000+ students through our educational programs."
+  }
+];
+---
+
+<section class="py-20 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center">
+      <h2 class="text-3xl font-extrabold text-gray-900 sm:text-4xl">Our Journey</h2>
+      <p class="mt-4 text-xl text-gray-600">A timeline of our impact</p>
+    </div>
+    <div class="mt-16">
+      <div class="relative">
+        <div class="absolute left-1/2 transform -translate-x-px h-full w-0.5 bg-gray-200"></div>
+        <div class="space-y-12">
+          {milestones.map(milestone => (
+            <div class="relative">
+              <div class="flex items-center">
+                <div class="flex-shrink-0 w-12 h-12 bg-primary rounded-full flex items-center justify-center">
+                  <span class="text-white font-bold">{milestone.year}</span>
+                </div>
+                <div class="ml-6">
+                  <h3 class="text-lg font-bold text-gray-900">{milestone.title}</h3>
+                  <p class="mt-1 text-gray-600">{milestone.description}</p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+</section> -->

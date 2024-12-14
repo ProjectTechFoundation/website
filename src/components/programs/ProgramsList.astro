@@ -1,0 +1,49 @@
+---
+const programs = [
+  {
+    title: "Tech Literacy Classes",
+    description: "Master essential digital skills for everyday life, from email to online safety.",
+    schedule: "Every Saturday and Sunday, 12 PM - 1 PM",
+    icon: "📱",
+    location: "Pembroke Pines / Walter C. Young Resource Center",
+  },
+  {
+    title: "Coding Workshops",
+    description: "Learn programming fundamentals through hands-on projects. Perfect for beginners and intermediate learners.",
+    schedule: "Every Saturday and Sunday, 1 PM - 2 PM",
+    icon: "💻",
+    location: "Pembroke Pines / Walter C. Young Resource Center",
+  },
+  {
+    title: "Device Donation Program",
+    description: "Receive or donate refurbished computers and tablets to support digital access.",
+    schedule: "Monthly distribution",
+    icon: "🖥️",
+    location: "Pembroke Pines / Walter C. Young Resource Center",
+  },
+];
+---
+
+<section class="py-20 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center">
+      <h1 class="text-4xl font-extrabold text-gray-900 sm:text-5xl">Our Programs</h1>
+      <p class="mt-4 text-xl text-gray-600">Empowering communities through technology education and access</p>
+    </div>
+    <div class="mt-16 grid grid-cols-1 gap-8 md:grid-cols-3">
+      {programs.map(program => (
+        <div class="bg-gray-50 rounded-lg p-8 shadow-sm hover:shadow-md transition-shadow duration-200">
+          <div class="text-4xl mb-4">{program.icon}</div>
+          <h3 class="text-xl font-bold text-gray-900">{program.title}</h3>
+          <p class="mt-4 text-gray-600">{program.description}</p>
+          <p class="mt-4 text-sm text-primary font-medium">{program.schedule}</p>
+          <br>
+          <p class="mt-2 text-sm text-gray-500 flex items-center">
+            <i class="fa-solid fa-location-dot text-primary mr-2"></i>
+            {program.location}
+          </p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

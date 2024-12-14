@@ -1,0 +1,37 @@
+---
+const programs = [
+  {
+    title: 'Coding Classes',
+    description: 'Learn programming fundamentals through hands-on projects.',
+    icon: '\u{1F4BB}' // 💻
+  },
+  {
+    title: 'Tech Literacy',
+    description: 'Essential digital skills for everyday life.',
+    icon: '\u{1F4F1}' // 📱
+  },
+  {
+    title: 'Device Donations',
+    description: 'Providing refurbished computers to those in need.',
+    icon: '\u{1F5A5}' // 🖥️
+  }
+];
+---
+
+<section class="py-20 bg-gray-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center">
+      <h2 class="text-3xl font-extrabold text-gray-900 sm:text-4xl">Our Programs</h2>
+      <p class="mt-4 text-xl text-gray-600">Bridging the digital divide through education and access</p>
+    </div>
+    <div class="mt-16 grid grid-cols-1 gap-8 md:grid-cols-3">
+      {programs.map(program => (
+        <div class="bg-white rounded-lg shadow-lg p-8 transform hover:scale-105 transition-transform duration-200">
+          <div class="text-4xl mb-4">{program.icon}</div>
+          <h3 class="text-xl font-bold text-gray-900">{program.title}</h3>
+          <p class="mt-4 text-gray-600">{program.description}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,47 @@
+---
+const donationOptions = [
+  {
+    title: "Device Donation",
+    description: "Donate your gently used computers, tablets, or smartphones to help bridge the digital divide.",
+    icon: "🖥️",
+    subject: "Interested in Donating Devices"
+  },
+  {
+    title: "Monetary Support",
+    description: "Your financial contribution helps us maintain our programs and reach more communities.",
+    icon: "💝",
+    subject: "Interested in Providing Monetary Support"
+  },
+  {
+    title: "Corporate Partnership",
+    description: "Partner with us to create lasting impact through technology education and access.",
+    icon: "🤝",
+    subject: "Interested in Corporate Partnership"
+  }
+];
+---
+
+<section class="py-20 bg-gray-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center">
+      <h2 class="text-3xl font-extrabold text-gray-900">Ways to Support</h2>
+      <p class="mt-4 text-xl text-gray-600">Help us make technology accessible to everyone</p>
+    </div>
+    <div class="mt-16 grid grid-cols-1 gap-8 md:grid-cols-3">
+      {donationOptions.map(option => (
+        <div class="bg-white rounded-lg shadow-sm p-8 text-center">
+          <div class="text-4xl mb-4">{option.icon}</div>
+          <h3 class="text-xl font-bold text-gray-900">{option.title}</h3>
+          <p class="mt-4 text-gray-600">{option.description}</p>
+          <a 
+            href={`mailto:contact@project-tech.org?subject=${encodeURIComponent(option.subject)}`} 
+            class="mt-6 inline-block text-primary hover:text-secondary font-medium"
+            target="_blank" 
+          >
+            Learn More →
+          </a>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

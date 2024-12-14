@@ -1,0 +1,92 @@
+---
+import Swiper from 'swiper/bundle';
+import 'swiper/css/bundle';
+
+const stats = [
+  { label: 'Students Taught', value: '20+' },
+  { label: 'Hours Volunteered', value: '50+' },
+  { label: 'Workshops Held', value: '7+' },
+  { label: 'Communities Served', value: '3+' }
+];
+
+const images = [
+  { src: '/images/impact-1.jpg', alt: 'Senior learning how to use her laptop' },
+  // { src: '/images/impact-1.jpg', alt: 'Community event with kids and mentors' },
+  // { src: '/images/impact-3.jpg', alt: 'Volunteers teaching coding workshop' }
+];
+---
+
+<section class="py-20 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center">
+      <h2 class="text-3xl font-extrabold text-gray-900 sm:text-4xl">Our Impact</h2>
+      <p class="mt-4 text-xl text-gray-600">Making technology accessible to everyone</p>
+    </div>
+    <div class="mt-16 grid grid-cols-1 lg:grid-cols-2 gap-12">
+      <!-- Image Carousel -->
+      <div class="relative">
+        <div class="swiper-container h-70 rounded-lg overflow-hidden shadow-md">
+          <div class="swiper-wrapper">
+            {images.map(image => (
+              <div class="swiper-slide">
+                <img
+                  src={image.src}
+                  alt={image.alt}
+                  class="w-full h-full object-cover"
+                />
+              </div>
+            ))}
+          </div>
+          <!-- Navigation Buttons -->
+          <div class="swiper-button-prev"></div>
+          <div class="swiper-button-next"></div>
+        </div>
+      </div>
+
+      <!-- Stats and Additional Content -->
+      <div class="space-y-8">
+        <!-- Stats -->
+        <div class="grid grid-cols-2 gap-8">
+          {stats.map(stat => (
+            <div class="text-center">
+              <p class="text-4xl font-extrabold text-primary">{stat.value}</p>
+              <p class="mt-2 text-lg font-medium text-gray-600">{stat.label}</p>
+            </div>
+          ))}
+        </div>
+
+        <!-- Quote or Testimonial -->
+        <blockquote class="mt-8 text-center text-lg italic text-gray-600">
+          "Thanks to the workshop, I can now use email to stay in touch with my grandkids and even FaceTime them whenever I want. I never thought learning this would be so easy and fun!"
+        </blockquote>
+
+        <!-- Call-to-Action Button -->
+        <div class="text-center">
+          <a 
+            href="/get-involved"
+            class="inline-block px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-primary hover:bg-secondary focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary"
+          >
+            Join Our Mission
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  import Swiper from 'swiper/bundle';
+
+  document.addEventListener('DOMContentLoaded', () => {
+    new Swiper('.swiper-container', {
+      loop: true,
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+      autoplay: {
+        delay: 5000,
+      },
+    });
+  });
+</script>

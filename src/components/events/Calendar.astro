@@ -1,0 +1,47 @@
+---
+const events = [
+  {
+    date: "2024-03-15",
+    title: "Intro to Web Development",
+    time: "10:00 AM - 12:00 PM",
+    location: "Tech Center",
+    type: "Workshop"
+  },
+  {
+    date: "2024-03-20",
+    title: "Digital Literacy for Seniors",
+    time: "2:00 PM - 4:00 PM",
+    location: "Community Center",
+    type: "Class"
+  },
+  {
+    date: "2024-03-25",
+    title: "Device Distribution Day",
+    time: "9:00 AM - 3:00 PM",
+    location: "Main Office",
+    type: "Event"
+  }
+];
+---
+
+<section class="py-20 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center">
+      <h1 class="text-4xl font-extrabold text-gray-900 sm:text-5xl">Upcoming Events</h1>
+      <p class="mt-4 text-xl text-gray-600">Join us at our upcoming workshops and events</p>
+    </div>
+    <div class="mt-16 grid grid-cols-1 gap-8 md:grid-cols-3">
+      {events.map(event => (
+        <div class="bg-gray-50 rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow duration-200">
+          <div class="text-primary font-semibold">{new Date(event.date).toLocaleDateString()}</div>
+          <h3 class="mt-2 text-xl font-bold text-gray-900">{event.title}</h3>
+          <p class="mt-2 text-gray-600">{event.time}</p>
+          <p class="text-gray-600">{event.location}</p>
+          <span class="mt-4 inline-block px-3 py-1 text-sm font-medium text-primary bg-blue-50 rounded-full">
+            {event.type}
+          </span>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,42 @@
+---
+const schedule = [
+  {
+    day: "Saturday",
+    sessions: [
+      { time: "12:00 PM - 1:00 PM", program: "Digital Literacy" },
+      { time: "1:00 PM - 2:00 PM", program: "Coding Workshops" },
+    ],
+  },
+  {
+    day: "Sunday",
+    sessions: [
+      { time: "12:00 PM - 1:00 PM", program: "Digital Literacy" },
+      { time: "1:00 PM - 2:00 PM", program: "Coding Workshops" },
+    ],
+  },
+];
+---
+
+<section class="py-20 bg-gray-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center">
+      <h2 class="text-3xl font-extrabold text-gray-900">Weekly Schedule</h2>
+      <p class="mt-4 text-xl text-gray-600">Join us for our regular programming</p>
+    </div>
+    <div class="mt-16 grid grid-cols-1 gap-8 md:grid-cols-2">
+      {schedule.map(day => (
+        <div class="bg-white rounded-lg shadow-sm p-6">
+          <h3 class="text-lg font-bold text-gray-900 mb-4">{day.day}</h3>
+          <div class="space-y-4">
+            {day.sessions.map(session => (
+              <div>
+                <p class="text-primary font-medium">{session.time}</p>
+                <p class="text-gray-600">{session.program}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

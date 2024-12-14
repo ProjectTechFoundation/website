@@ -1,0 +1,119 @@
+---
+import FormInput from '../ui/FormInput.astro';
+import FormTextarea from '../ui/FormTextarea.astro';
+
+---
+
+<section class="py-20 bg-white">
+  <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center">
+      <h1 class="text-4xl font-extrabold text-gray-900 sm:text-5xl">Contact Us</h1>
+      <p class="mt-4 text-xl text-gray-600">Have questions? We'd love to hear from you.</p>
+    </div>
+
+    <!-- Success Message -->
+    <div id="success-message" class="hidden">
+      <div class="flex items-center justify-center text-green-600 bg-green-50 p-4 rounded-md">
+        <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+        </svg>
+        <span>Thank you! Your message has been sent successfully.</span>
+      </div>
+    </div>
+
+    <form 
+      action="https://formsubmit.co/igarg0615@gmail.com" 
+      method="POST" 
+      class="mt-12 space-y-8"
+      id="contact-form"
+    >
+      <!-- Hidden Inputs for FormSubmit -->
+      <input type="hidden" name="_next" value="javascript:void(0);" />
+      <input type="hidden" name="_autoresponse" value="Thank you for contacting Project Tech! We’re excited to assist you. Your submission details will be reviewed, and we’ll get in touch if necessary." />
+      <input type="hidden" name="_captcha" value="false" />
+
+      <!-- Full Name and Email -->
+      <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
+        <FormInput
+          id="name"
+          name="name"
+          label="Full Name"
+          required
+        />
+        <FormInput
+          id="email"
+          name="email"
+          type="email"
+          label="Email Address"
+          required
+        />
+      </div>
+
+      <!-- Subject Input -->
+      <FormInput
+        id="subject"
+        name="subject"
+        label="Subject"
+        required
+      />
+
+      <!-- Message Input -->
+      <FormTextarea
+        id="message"
+        name="message"
+        label="Message"
+        placeholder="Write your message here..."
+        required
+      />
+
+      <!-- Submit Button -->
+      <div class="text-center">
+        <button 
+          type="submit" 
+          class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-primary hover:bg-secondary focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary"
+        >
+          Send Message
+        </button>
+      </div>
+    </form>
+  </div>
+</section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const form = document.getElementById('contact-form');
+    const successMessage = document.getElementById('success-message');
+
+    if (form && successMessage) {
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        try {
+          const formData = new FormData(form);
+          const response = await fetch(form.action, {
+            method: 'POST',
+            body: formData,
+          });
+
+          if (response.ok) {
+            // Show success message
+            successMessage.classList.remove('hidden');
+
+            // Reset form fields
+            form.reset();
+
+            // Hide success message after 5 seconds
+            setTimeout(() => {
+              successMessage.classList.add('hidden');
+            }, 5000);
+          } else {
+            alert('An error occurred. Please try again.');
+          }
+        } catch (error) {
+          console.error('Error:', error);
+          alert('An error occurred. Please try again.');
+        }
+      });
+    }
+  });
+</script>

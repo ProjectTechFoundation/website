@@ -1,0 +1,174 @@
+---
+import FormInput from '../ui/FormInput.astro';
+---
+
+<section class="py-20 bg-white">
+  <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center">
+      <h1 class="text-4xl font-extrabold text-gray-900 sm:text-5xl">Register for a Program</h1>
+      <p class="mt-4 text-xl text-gray-600">Take the first step towards digital literacy</p>
+    </div>
+
+    <!-- Success Message -->
+    <div id="success-message" class="hidden">
+      <div class="flex items-center justify-center text-green-600 bg-green-50 p-4 rounded-md">
+        <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+        </svg>
+        <span>Thank you! Your registration has been received successfully.</span>
+      </div>
+    </div>
+
+    <form 
+      action="https://formsubmit.co/igarg0615@gmail.com" 
+      method="POST" 
+      class="mt-12 space-y-8"
+      id="registration-form"
+    >
+      <!-- Hidden Inputs for FormSubmit -->
+      <input type="hidden" name="_next" value="javascript:void(0);" />
+      <input type="hidden" name="_autoresponse" value="Thank you for registering for a program with Project Tech! We’re excited to have you join us. Your submission details will be reviewed, and we’ll get in touch if necessary." />
+      <input type="hidden" name="_captcha" value="false" />
+
+      <!-- Full Name and Email -->
+      <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
+        <FormInput
+          id="name"
+          name="name"
+          label="Full Name"
+          required
+        />
+        <FormInput
+          id="email"
+          name="email"
+          type="email"
+          label="Email Address"
+          required
+        />
+      </div>
+
+      <!-- Program and Age Group -->
+      <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
+        <div class="relative">
+          <select 
+            id="program"
+            name="program"
+            required
+            class="block px-2.5 pb-2.5 pt-4 w-full text-gray-900 bg-transparent rounded-lg border border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+          >
+            <option value="" disabled selected>Choose a program</option>
+            <option value="Digital Literacy">Digital Literacy</option>
+            <option value="Coding Workshops">Coding Workshops</option>
+          </select>
+          <label 
+            for="program"
+            class="absolute text-gray-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:-translate-y-4 peer-focus:scale-75 peer-focus:text-blue-600 left-1"
+          >
+            Select Program
+          </label>
+        </div>
+
+        <div class="relative">
+          <select 
+            id="ageGroup"
+            name="ageGroup"
+            required
+            class="block px-2.5 pb-2.5 pt-4 w-full text-gray-900 bg-transparent rounded-lg border border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+          >
+            <option value="" disabled selected>Choose your age group</option>
+            <option value="Child (7-12)">Child (7-12)</option>
+            <option value="Teen (13-17)">Teen (13-17)</option>
+            <option value="Adult (18-60)">Adult (18-60)</option>
+            <option value="Senior (60+)">Senior (60+)</option>
+          </select>
+          <label 
+            for="ageGroup"
+            class="absolute text-gray-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:-translate-y-4 peer-focus:scale-75 peer-focus:text-blue-600 left-1"
+          >
+            Age Group
+          </label>
+        </div>
+      </div>
+
+      <!-- Device and Headcount -->
+      <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
+        <div class="relative">
+          <select 
+            id="device"
+            name="device"
+            required
+            class="block px-2.5 pb-2.5 pt-4 w-full text-gray-900 bg-transparent rounded-lg border border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+          >
+            <option value="" disabled selected>Will you bring a device?</option>
+            <option value="Yes">Yes</option>
+            <option value="No">No (Library computers available)</option>
+          </select>
+          <label 
+            for="device"
+            class="absolute text-gray-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:-translate-y-4 peer-focus:scale-75 peer-focus:text-blue-600 left-1"
+          >
+            Device Availability
+          </label>
+        </div>
+
+        <FormInput
+          id="headcount"
+          name="headcount"
+          type="number"
+          label="How many people are attending?"
+          required
+          min="1"
+        />
+      </div>
+
+      <!-- Submit Button -->
+      <div class="text-center">
+        <button 
+          type="submit" 
+          class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-primary hover:bg-secondary focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary"
+        >
+          Register Now
+        </button>
+      </div>
+    </form>
+  </div>
+</section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const form = document.getElementById('registration-form');
+    const successMessage = document.getElementById('success-message');
+
+    if (form && successMessage) {
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        try {
+          const formData = new FormData(form);
+          const response = await fetch(form.action, {
+            method: 'POST',
+            body: formData,
+          });
+
+          if (response.ok) {
+            // Show success message
+            successMessage.classList.remove('hidden');
+
+            // Reset form fields
+            form.reset();
+
+            // Hide success message after 5 seconds
+            setTimeout(() => {
+              successMessage.classList.add('hidden');
+            }, 5000);
+          } else {
+            alert('An error occurred. Please try again.');
+          }
+        } catch (error) {
+          console.error('Error:', error);
+          alert('An error occurred. Please try again.');
+        }
+      });
+    }
+  });
+</script>

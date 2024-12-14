@@ -1,0 +1,211 @@
+---
+import FormInput from '../ui/FormInput.astro';
+import FormTextarea from '../ui/FormTextarea.astro';
+
+const volunteerOpportunities = [
+  "Teaching Assistant",
+  "Technical Support",
+  "Device Refurbishment",
+  "Event Coordination",
+  "Marketing & Outreach"
+];
+---
+
+<section class="py-20 bg-white">
+  <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center">
+      <h1 class="text-4xl font-extrabold text-gray-900 sm:text-5xl">Volunteer With Us</h1>
+      <p class="mt-4 text-xl text-gray-600">Join our mission to bridge the digital divide</p>
+    </div>
+
+    <form 
+      action="https://formsubmit.co/igarg0615@gmail.com" 
+      method="POST"
+      class="mt-12 space-y-8"
+      id="volunteer-form"
+      novalidate
+    >
+      <!-- Hidden Inputs for FormSubmit -->
+      <input type="hidden" name="_next" value="javascript:void(0);" />
+      <input type="hidden" name="_autoresponse" value="Thank you for applying to volunteer with Project Tech! We'll review your application and be in touch soon." />
+      <input type="hidden" name="_captcha" value="false" />
+
+      <!-- First and Last Name -->
+      <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
+        <FormInput
+          id="firstName"
+          name="firstName"
+          label="First Name"
+          required
+        />
+        <FormInput
+          id="lastName"
+          name="lastName"
+          label="Last Name"
+          required
+        />
+      </div>
+
+      <!-- Email and Phone -->
+      <FormInput
+        id="email"
+        name="email"
+        type="email"
+        label="Email Address"
+        required
+      />
+
+      <FormInput
+        id="phone"
+        name="phone"
+        type="tel"
+        label="Phone Number"
+        required
+      />
+
+      <!-- Area of Interest -->
+      <div class="relative">
+        <select 
+          id="opportunity" 
+          name="opportunity" 
+          required
+          class="block px-2.5 pb-2.5 pt-4 w-full text-gray-900 bg-transparent rounded-lg border border-gray-300 appearance-none focus:outline-none focus:ring-0 peer"
+        >
+          <option value="" disabled selected>Select an opportunity</option>
+          {volunteerOpportunities.map(opportunity => (
+            <option value={opportunity}>{opportunity}</option>
+          ))}
+        </select>
+        <label 
+          for="opportunity"
+          class="absolute text-gray-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:-translate-y-4 peer-focus:scale-75 peer-focus:text-blue-600 left-1"
+        >
+          Area of Interest
+        </label>
+      </div>
+
+      <!-- Relevant Experience -->
+      <FormTextarea
+        id="experience"
+        name="experience"
+        label="Relevant Experience"
+        required
+      />
+
+      <!-- Availability -->
+      <div class="relative">
+        <select 
+          id="availability"
+          name="availability"
+          required
+          class="block px-2.5 pb-2.5 pt-4 w-full text-gray-900 bg-transparent rounded-lg border border-gray-300 appearance-none focus:outline-none focus:ring-0 peer"
+        >
+          <option value="" disabled selected>Choose availability</option>
+          <option value="Weekdays">Weekdays</option>
+          <option value="Weekends">Weekends</option>
+          <option value="Flexible">Flexible</option>
+        </select>
+        <label 
+          for="availability"
+          class="absolute text-gray-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:-translate-y-4 peer-focus:scale-75 peer-focus:text-blue-600 left-1"
+        >
+          Availability
+        </label>
+      </div>
+
+      <!-- Skills -->
+      <FormTextarea
+        id="skills"
+        name="skills"
+        label="Skills You Bring to the Role"
+        required
+      />
+
+      <!-- Why Volunteer -->
+      <FormTextarea
+        id="motivation"
+        name="motivation"
+        label="Why Do You Want to Volunteer with Us?"
+        required
+      />
+
+      <!-- Submit Button -->
+      <div class="text-center">
+        <button 
+          type="submit" 
+          class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-primary hover:bg-secondary focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary"
+        >
+          Submit Application
+        </button>
+      </div>
+
+      <!-- Error Message -->
+
+      <div id="error-message" class="hidden mt-6">
+        <div class="flex items-center justify-center text-red-600 bg-red-50 p-4 rounded-md">
+          <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+          <span><strong>Error:</strong> Please fill out all required fields before submitting.</span>
+        </div>
+      </div>
+
+      <!-- Success Message -->
+      <div id="success-message" class="hidden mt-6">
+        <div class="flex items-center justify-center text-green-600 bg-green-50 p-4 rounded-md">
+          <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+        </svg>
+          <span>Thank you for your interest in volunteering! We'll be in touch soon.</span>
+        </div>
+      </div>
+    </form>
+  </div>
+</section>
+
+<script>
+  const form = document.getElementById('volunteer-form');
+  const successMessage = document.getElementById('success-message');
+  const errorMessage = document.getElementById('error-message');
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    let isValid = true;
+
+    // Check all required fields
+    form.querySelectorAll('input, select, textarea').forEach((field) => {
+      if (field.required && !field.value.trim()) {
+        isValid = false;
+      }
+    });
+
+    if (!isValid) {
+      // Show error message
+      errorMessage.classList.remove('hidden');
+      successMessage.classList.add('hidden');
+      return;
+    }
+
+    try {
+      const formData = new FormData(form);
+      const response = await fetch(form.action, {
+        method: 'POST',
+        body: formData,
+      });
+
+      if (response.ok) {
+        successMessage.classList.remove('hidden');
+        errorMessage.classList.add('hidden');
+        form.reset();
+        setTimeout(() => {
+          successMessage.classList.add('hidden');
+        }, 5000);
+      } else {
+        alert('An error occurred. Please try again.');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  });
+</script>

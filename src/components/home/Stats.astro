@@ -1,0 +1,52 @@
+---
+interface Stat {
+  value: string;
+  label: string;
+  source: string;
+  link: string;
+}
+
+const stats: Stat[] = [
+  {
+    value: "42%",
+    label: "of public schools in the U.S. do not offer computer science courses.",
+    source: "Computer Science Teachers Association, 2020",
+    link: "https://advocacy.code.org/2022_state_of_cs.pdf"
+  }
+];
+---
+
+<div class="relative rounded-lg overflow-hidden">
+  <!-- Background image container -->
+  <div class="absolute inset-0 z-0">
+    <img 
+      src="/images/stats-bg.jpg" 
+      alt="" 
+      class="w-full h-full object-cover"
+    />
+  </div>
+
+  <!-- Content with text-fitted backgrounds -->
+  <div class="relative z-10 p-6">
+    {stats.map(stat => (
+      <div class="flex flex-col items-start">
+        <div class="inline-flex">
+          <span class="bg-blue-600 text-white text-5xl font-bold px-4 py-2 rounded-md">{stat.value}</span>
+        </div>
+        <div class="mt-3">
+          <p class="bg-blue-600 text-white text-lg px-4 py-2 rounded-md inline-block">{stat.label}</p>
+        </div>
+        <div class="mt-2">
+          <a 
+            href={stat.link}
+            target="_blank"
+            rel="noopener noreferrer" 
+            class="bg-blue-600/90 text-white text-sm px-4 py-1 rounded-md inline-block hover:bg-blue-700"
+          >
+            Source: {stat.source}
+          </a>
+        </div>
+      </div>
+    ))}
+  </div>
+</div>

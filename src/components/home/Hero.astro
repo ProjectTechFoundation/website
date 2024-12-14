@@ -1,0 +1,50 @@
+---
+import RotatingText from './RotatingText';
+import Stats from './Stats.astro';
+---
+
+<section class="relative min-h-screen flex items-center bg-primary overflow-hidden">
+  <!-- Background Image -->
+  <div class="absolute inset-0 z-0">
+    <img 
+      src="/images/hero-bg.jpg" 
+      alt="" 
+      class="w-full h-full object-cover opacity-10"
+    />
+  </div>
+
+  <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+      <!-- Left Column - Takes up 8 columns on large screens -->
+      <div class="lg:col-span-8 text-center lg:text-left">
+        <h1 class="text-4xl tracking-tight font-extrabold text-white sm:text-5xl md:text-6xl">
+          <span class="block">Empowering Communities</span>
+          <span class="block text-blue-200">Through Technology</span>
+        </h1>
+        <div class="mt-6 h-20">
+          <RotatingText client:load />
+        </div>
+        <div class="mt-10 flex flex-wrap justify-center lg:justify-start gap-4">
+          <a href="/programs" class="btn-primary">Join a Workshop</a>
+          <a href="/get-involved" class="btn-secondary">Volunteer</a>
+          <a href="https://ko-fi.com/ishaantek" target="_blank" class="btn-secondary">Donate</a>
+        </div>
+      </div>
+
+      <!-- Right Column - Takes up 4 columns on large screens -->
+      <div class="lg:col-span-4">
+        <Stats />
+      </div>
+    </div>
+  </div>
+  <div class="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-white to-transparent"></div>
+</section>
+
+<style>
+  .btn-primary {
+    @apply inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 transform hover:scale-105 transition-all duration-200;
+  }
+  .btn-secondary {
+    @apply inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-blue-700 bg-blue-100 hover:bg-blue-200 transform hover:scale-105 transition-all duration-200;
+  }
+</style>

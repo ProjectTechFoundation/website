@@ -1,0 +1,54 @@
+---
+const contactInfo = {
+  email: "info@projecttech.org",
+  phone: "(555) 123-4567",
+  address: "123 Tech Street, Digital City, DC 12345",
+  hours: "Monday - Friday: 9:00 AM - 5:00 PM"
+};
+
+const socialLinks = [
+  { platform: "Twitter", url: "#", icon: "🐦" },
+  { platform: "LinkedIn", url: "#", icon: "💼" },
+  { platform: "Facebook", url: "#", icon: "👥" },
+  { platform: "Instagram", url: "#", icon: "📸" }
+];
+---
+
+<section class="py-20 bg-gray-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 gap-8 md:grid-cols-2">
+      <div>
+        <h2 class="text-2xl font-bold text-gray-900">Get in Touch</h2>
+        <dl class="mt-8 space-y-6">
+          <div>
+            <dt class="text-sm font-medium text-gray-500">Email</dt>
+            <dd class="mt-1 text-lg text-primary">{contactInfo.email}</dd>
+          </div>
+          <div>
+            <dt class="text-sm font-medium text-gray-500">Phone</dt>
+            <dd class="mt-1 text-lg text-gray-900">{contactInfo.phone}</dd>
+          </div>
+          <div>
+            <dt class="text-sm font-medium text-gray-500">Address</dt>
+            <dd class="mt-1 text-lg text-gray-900">{contactInfo.address}</dd>
+          </div>
+          <div>
+            <dt class="text-sm font-medium text-gray-500">Hours</dt>
+            <dd class="mt-1 text-lg text-gray-900">{contactInfo.hours}</dd>
+          </div>
+        </dl>
+      </div>
+      <div>
+        <h2 class="text-2xl font-bold text-gray-900">Follow Us</h2>
+        <div class="mt-8 flex space-x-6">
+          {socialLinks.map(link => (
+            <a href={link.url} class="text-gray-400 hover:text-gray-500">
+              <span class="text-2xl">{link.icon}</span>
+              <span class="sr-only">{link.platform}</span>
+            </a>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

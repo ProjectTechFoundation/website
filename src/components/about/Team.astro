@@ -1,0 +1,88 @@
+---
+import TeamModal from './TeamModal';
+
+const team = [
+  {
+    name: "Ishaan Garg",
+    role: "Founder / Executive Director",
+    image: "/images/team/ishaan.jpg",
+    bio: "Meet Ishaan, a talented and motivated sophomore in high school with an exceptional passion for computer science. With a dedication to inspiring and empowering others, Ishaan is on a mission to unlock the potential of technology and significantly impact the world. Through his innovative ideas and relentless drive, Ishaan is set to become a driving force in shaping the future of technology.",
+    linkedin: "https://linkedin.com/in/garg-ishaan"
+  }
+];
+
+const volunteers = [
+  // {
+  //   name: "Emma Wilson",
+  //   role: "Teaching Assistant",
+  //   image: "/images/volunteers/emma.jpg"
+  // }
+];
+---
+
+<section class="py-20 bg-gray-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center">
+      <h2 class="text-3xl font-extrabold text-gray-900 sm:text-4xl">Our Team</h2>
+      <p class="mt-4 text-xl text-gray-600">Meet the people behind Project Tech</p>
+    </div>
+
+    <!-- Core Team -->
+    <div class="mt-16 grid grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-4">
+      {team.map((member, index) => (
+        <div 
+          class="text-center cursor-pointer transform hover:scale-105 transition-all duration-200"
+          data-member-index={index}
+        >
+          <div class="relative">
+            <div class="w-48 h-48 rounded-full mx-auto overflow-hidden bg-gray-200">
+              <img
+                src={member.image}
+                alt={member.name}
+                class="w-full h-full object-cover"
+              />
+            </div>
+          </div>
+          <div class="mt-6">
+            <h3 class="text-lg font-medium text-gray-900">{member.name}</h3>
+            <p class="text-sm text-primary">{member.role}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- Volunteers Section -->
+    <div class="mt-24">
+      <h2 class="text-2xl font-bold text-gray-900 text-center">Our Volunteers</h2>
+      <div class="mt-12 grid grid-cols-2 gap-8 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
+        {volunteers.map(volunteer => (
+          <div class="text-center">
+            <div class="w-32 h-32 rounded-full mx-auto overflow-hidden bg-gray-200">
+              <img
+                src={volunteer.image}
+                alt={volunteer.name}
+                class="w-full h-full object-cover"
+              />
+            </div>
+            <div class="mt-4">
+              <h3 class="text-sm font-medium text-gray-900">{volunteer.name}</h3>
+              <p class="text-xs text-gray-500">{volunteer.role}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+
+  <TeamModal client:load team={team} />
+</section>
+
+<script>
+  document.querySelectorAll('[data-member-index]').forEach(element => {
+    element.addEventListener('click', () => {
+      const index = element.getAttribute('data-member-index');
+      const event = new CustomEvent('openTeamModal', { detail: { index: Number(index) } });
+      window.dispatchEvent(event);
+    });
+  });
+</script>
