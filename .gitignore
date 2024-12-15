@@ -1,27 +1,51 @@
-# build output
+# Build output
 dist/
 
-# generated types
+# Astro generated files
 .astro/
 
-# dependencies
+# Dependency directories
 node_modules/
 
-# logs
+# Logs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 
-# environment variables
+# Environment variables
 .env
 .env.production
 
 # macOS-specific files
 .DS_Store
 
-# jetbrains setting folder
+# JetBrains IDE settings
 .idea/
-.DS_Store
-node_modules
-dist
+
+# Editor temporary files
+*.swp
+*.swo
+*~
+
+# Coverage files (for testing)
+coverage/
+*.lcov
+
+# Tailwind JIT mode files
+*.css
+
+# TypeScript
+*.tsbuildinfo
+
+# Optional npm cache directory
+.npm
+
+# Debug files
+*.log
+
+# Sandboxes
+codesandbox
+
+# Other redundant files
+Thumbs.db
