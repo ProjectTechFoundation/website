@@ -12,12 +12,9 @@ const stats = [
 const images = [
   { src: "/images/impact/1.jpg", alt: "Senior learning how to use her laptop" },
   { src: "/images/impact/2.jpg", alt: "Senior learning how to use her laptop" },
-  { src: "/images/impact/3.jpg", alt: "Senior setting up her email account" },
-  { src: "/images/impact/4.jpg", alt: "Senior learning how to use her iPad" },
-  {
-    src: "/images/impact/5.jpg",
-    alt: "Senior who learned how to use contacts on his phone",
-  },
+  { src: "/images/impact-3.jpg", alt: "Senior setting up her email account" },
+  { src: "/images/impact-4.jpg", alt: "Senior learning how to use her iPad" },
+  { src: "/images/impact-5.jpg", alt: "Senior who learned how to use contacts on his phone" },
 ];
 ---
 
@@ -34,20 +31,16 @@ const images = [
     <div class="mt-16 grid grid-cols-1 lg:grid-cols-2 gap-12">
       <!-- Image Carousel -->
       <div class="relative">
-        <div
-          class="swiper-container h-70 w-full rounded-lg overflow-hidden shadow-md"
-        >
+        <div class="swiper-container h-70 rounded-lg overflow-hidden shadow-md">
           <div class="swiper-wrapper">
             {
               images.map((image) => (
                 <div class="swiper-slide">
-                  <div class="w-full h-full">
-                    <img
-                      src={image.src}
-                      alt={image.alt}
-                      class="w-full h-full object-cover"
-                    />
-                  </div>
+                  <img
+                    src={image.src}
+                    alt={image.alt}
+                    class="w-full h-full object-cover"
+                  />
                 </div>
               ))
             }
