@@ -1,0 +1,74 @@
+---
+const chapters = [
+  {
+    location: 'South Florida',
+    lead: 'Ishaan Garg (Founder)',
+    status: 'Active',
+    description: 'Meets biweekly at Arbor Terrace Senior Living Home to teach basic tech skills to seniors.',
+    details: 'This is where Project Tech began. Ishaan runs hands-on sessions with seniors, covering internet use, email, phone setup, and digital safety. Sessions are free and run every other week.',
+    icon: 'M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z'
+  },
+  {
+    location: 'Tampa, FL',
+    lead: 'Abhiram Vislavath',
+    status: 'Launching',
+    description: 'Currently planning tech workshops for senior communities in Central Florida.',
+    details: 'Abhiram is forming the Tampa chapter and reaching out to libraries and community centers to offer free digital help events for seniors. Launch planned for later this year.',
+    icon: 'M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z'
+  },
+  {
+    location: 'Bay Area, CA',
+    lead: 'Ayana Batra',
+    status: 'Launching',
+    description: 'Preparing to bring tech literacy programs to senior communities in Northern California.',
+    details: 'Ayana is organizing the Bay Area chapter and working to partner with local spaces to host beginner-friendly tech workshops. First sessions are expected to start by the end of the year.',
+    icon: 'M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z'
+  }
+];
+---
+
+<section class="py-20 bg-gray-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center">
+      <h1 class="text-4xl font-extrabold text-gray-900 sm:text-5xl">Our Chapters</h1>
+      <p class="mt-4 text-xl text-gray-600">Expanding our impact across the United States</p>
+    </div>
+    <div class="mt-16 grid grid-cols-1 gap-8 md:grid-cols-3">
+      {chapters.map(chapter => (
+        <div class="bg-white rounded-lg shadow-lg p-8 transform hover:scale-105 transition-transform duration-200 cursor-pointer" x-data="{ open: false }" @click="open = !open">
+          <div class="flex items-center justify-between mb-6">
+            <h3 class="text-2xl font-bold text-gray-900">{chapter.location}</h3>
+            <span class={`px-4 py-1.5 text-sm font-medium rounded-full ${
+              chapter.status === 'Active' 
+                ? 'bg-green-50 text-green-700 ring-1 ring-green-600/20' 
+                : 'bg-blue-50 text-blue-700 ring-1 ring-blue-600/20'
+            }`}>
+              {chapter.status}
+            </span>
+          </div>
+          <div class="space-y-4">
+            <p class="text-gray-600 font-medium">Chapter Lead: {chapter.lead}</p>
+            <p class="text-gray-600 leading-relaxed">{chapter.description}</p>
+            <div x-show="open" x-transition class="mt-4 pt-4 border-t border-gray-100">
+              <p class="text-gray-600 leading-relaxed">{chapter.details}</p>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+    <div class="mt-12 text-center">
+      <a href="#" class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 transition-colors duration-200">
+        Start a Chapter
+      </a>
+    </div>
+  </div>
+</section>
+
+<script>
+  // Initialize Alpine.js
+  import Alpine from 'alpinejs';
+  document.addEventListener('DOMContentLoaded', () => {
+    const alpine = Alpine;
+    alpine.start();
+  });
+</script> 

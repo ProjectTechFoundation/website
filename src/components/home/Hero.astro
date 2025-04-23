@@ -4,13 +4,21 @@ import Stats from './Stats.astro';
 ---
 
 <section class="relative min-h-screen flex items-center bg-primary overflow-hidden">
-  <!-- Background Image -->
+  <!-- Background Image with Overlay -->
   <div class="absolute inset-0 z-0">
+    <div class="absolute inset-0 bg-gradient-to-br from-blue-900/90 to-blue-800/90"></div>
     <img 
       src="/images/hero-bg.jpg" 
       alt="" 
-      class="w-full h-full object-cover opacity-10"
+      class="w-full h-full object-cover mix-blend-overlay"
     />
+  </div>
+
+  <!-- Animated Background Elements -->
+  <div class="absolute inset-0 z-0">
+    <div class="absolute top-0 left-0 w-72 h-72 bg-blue-400 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob"></div>
+    <div class="absolute top-0 right-0 w-72 h-72 bg-purple-400 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob animation-delay-2000"></div>
+    <div class="absolute -bottom-8 left-20 w-72 h-72 bg-pink-400 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob animation-delay-4000"></div>
   </div>
 
   <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
@@ -19,15 +27,20 @@ import Stats from './Stats.astro';
       <div class="lg:col-span-8 text-center lg:text-left">
         <h1 class="text-4xl tracking-tight font-extrabold text-white sm:text-5xl md:text-6xl">
           <span class="block">Empowering Communities</span>
-          <span class="block text-blue-200">Through Technology</span>
+          <span class="block text-blue-200 mt-2">Through Technology</span>
         </h1>
-        <div class="mt-6 h-20">
-          <RotatingText client:load />
+        <div class="mt-6">
+          <RotatingText client:visible />
         </div>
         <div class="mt-10 flex flex-wrap justify-center lg:justify-start gap-4">
-          <a href="/programs" class="btn-primary">Join a Workshop</a>
-          <a href="/get-involved" class="btn-secondary">Volunteer</a>
-          <a href="https://ko-fi.com/ishaantek" target="_blank" class="btn-secondary">Donate</a>
+          <a href="/get-involved" class="btn-primary group">
+            <span class="relative z-10">Volunteer</span>
+            <span class="absolute inset-0 bg-blue-700 rounded-md transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></span>
+          </a>
+          <a href="https://ko-fi.com/ishaantek" target="_blank" class="btn-secondary group">
+            <span class="relative z-10">Donate</span>
+            <span class="absolute inset-0 bg-blue-200 rounded-md transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></span>
+          </a>
         </div>
       </div>
 
@@ -42,9 +55,24 @@ import Stats from './Stats.astro';
 
 <style>
   .btn-primary {
-    @apply inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 transform hover:scale-105 transition-all duration-200;
+    @apply relative inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 transform hover:scale-105 transition-all duration-200 overflow-hidden;
   }
   .btn-secondary {
-    @apply inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-blue-700 bg-blue-100 hover:bg-blue-200 transform hover:scale-105 transition-all duration-200;
+    @apply relative inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-blue-700 bg-blue-100 hover:bg-blue-200 transform hover:scale-105 transition-all duration-200 overflow-hidden;
+  }
+  @keyframes blob {
+    0% { transform: translate(0px, 0px) scale(1); }
+    33% { transform: translate(30px, -50px) scale(1.1); }
+    66% { transform: translate(-20px, 20px) scale(0.9); }
+    100% { transform: translate(0px, 0px) scale(1); }
+  }
+  .animate-blob {
+    animation: blob 7s infinite;
+  }
+  .animation-delay-2000 {
+    animation-delay: 2s;
+  }
+  .animation-delay-4000 {
+    animation-delay: 4s;
   }
 </style>

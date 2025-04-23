@@ -18,75 +18,88 @@ const images = [
 ];
 ---
 
-<section class="py-20 bg-white">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<section class="py-20 bg-white relative overflow-hidden">
+  <!-- Background Elements -->
+  <div class="absolute inset-0 z-0">
+    <div class="absolute top-0 right-0 w-96 h-96 bg-blue-50 rounded-full mix-blend-multiply filter blur-3xl opacity-70 transform -translate-y-1/2 translate-x-1/2"></div>
+    <div class="absolute bottom-0 left-0 w-96 h-96 bg-purple-50 rounded-full mix-blend-multiply filter blur-3xl opacity-70 transform translate-y-1/2 -translate-x-1/2"></div>
+  </div>
+
+  <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="text-center">
       <h2 class="text-3xl font-extrabold text-gray-900 sm:text-4xl">
         Our Impact
       </h2>
       <p class="mt-4 text-xl text-gray-600">
-        Making technology accessible to everyone
+        Making a difference in communities across the United States
       </p>
     </div>
-    <div class="mt-16 grid grid-cols-1 lg:grid-cols-2 gap-12">
-      <!-- Image Carousel -->
-      <div class="relative">
-        <div class="swiper-container h-70 rounded-lg overflow-hidden shadow-md">
-          <div class="swiper-wrapper">
-            {
-              images.map((image) => (
-                <div class="swiper-slide">
-                  <img
-                    src={image.src}
-                    alt={image.alt}
-                    class="w-full h-full object-cover"
-                  />
-                </div>
-              ))
-            }
-          </div>
-          <!-- Navigation Buttons -->
-          <div class="swiper-button-prev"></div>
-          <div class="swiper-button-next"></div>
+
+    <div class="mt-16 grid grid-cols-1 gap-8 md:grid-cols-3">
+      <!-- Education Card -->
+      <div class="bg-white rounded-2xl shadow-xl p-8 transform hover:scale-105 transition-all duration-300 border border-gray-100">
+        <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-6">
+          <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+          </svg>
         </div>
+        <h3 class="text-xl font-bold text-gray-900 mb-4">Education</h3>
+        <p class="text-gray-600">Providing free tech education to students and seniors, helping them develop essential digital skills for the modern world.</p>
       </div>
 
-      <!-- Stats and Additional Content -->
-      <div class="space-y-8">
-        <!-- Stats -->
-        <div class="grid grid-cols-2 gap-8">
-          {
-            stats.map((stat) => (
-              <div class="text-center">
-                <p class="text-4xl font-extrabold text-primary">{stat.value}</p>
-                <p class="mt-2 text-lg font-medium text-gray-600">
-                  {stat.label}
-                </p>
-              </div>
-            ))
-          }
+      <!-- Community Card -->
+      <div class="bg-white rounded-2xl shadow-xl p-8 transform hover:scale-105 transition-all duration-300 border border-gray-100">
+        <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-6">
+          <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+          </svg>
         </div>
+        <h3 class="text-xl font-bold text-gray-900 mb-4">Community</h3>
+        <p class="text-gray-600">Building strong partnerships with local organizations to create sustainable tech education programs in communities.</p>
+      </div>
 
-        <!-- Quote or Testimonial -->
-        <blockquote class="mt-8 text-center text-lg italic text-gray-600">
-          "Thanks to the workshop, I can now use email to stay in touch with my
-          grandkids and even FaceTime them whenever I want. I never thought
-          learning this would be so easy and fun!"
-        </blockquote>
-
-        <!-- Call-to-Action Button -->
-        <div class="text-center">
-          <a
-            href="/get-involved"
-            class="inline-block px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-primary hover:bg-secondary focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary"
-          >
-            Join Our Mission
-          </a>
+      <!-- Innovation Card -->
+      <div class="bg-white rounded-2xl shadow-xl p-8 transform hover:scale-105 transition-all duration-300 border border-gray-100">
+        <div class="w-12 h-12 bg-pink-100 rounded-lg flex items-center justify-center mb-6">
+          <svg class="w-6 h-6 text-pink-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+          </svg>
         </div>
+        <h3 class="text-xl font-bold text-gray-900 mb-4">Innovation</h3>
+        <p class="text-gray-600">Developing creative solutions to bridge the digital divide and make technology accessible to everyone.</p>
+      </div>
+    </div>
+
+    <!-- Impact Stats -->
+    <div class="mt-20 grid grid-cols-1 gap-8 md:grid-cols-4">
+      <div class="text-center">
+        <div class="text-4xl font-bold text-blue-600 mb-2">500+</div>
+        <div class="text-gray-600">Students Taught</div>
+      </div>
+      <div class="text-center">
+        <div class="text-4xl font-bold text-purple-600 mb-2">3</div>
+        <div class="text-gray-600">Active Chapters</div>
+      </div>
+      <div class="text-center">
+        <div class="text-4xl font-bold text-pink-600 mb-2">1000+</div>
+        <div class="text-gray-600">Hours of Education</div>
+      </div>
+      <div class="text-center">
+        <div class="text-4xl font-bold text-blue-600 mb-2">50+</div>
+        <div class="text-gray-600">Volunteers</div>
       </div>
     </div>
   </div>
 </section>
+
+<style>
+  .transform {
+    transition: transform 0.3s ease-in-out;
+  }
+  .transform:hover {
+    transform: translateY(-5px);
+  }
+</style>
 
 <script>
   import Swiper from "swiper/bundle";

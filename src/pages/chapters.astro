@@ -1,0 +1,49 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ChaptersList from '../components/chapters/ChaptersList.astro';
+import WhyStartChapter from '../components/chapters/WhyStartChapter.astro';
+
+const chapters = [
+  {
+    location: 'South Florida',
+    lead: 'Ishaan Garg',
+    role: 'Founder',
+    status: 'Active',
+    description: 'Meets biweekly at Arbor Terrace Senior Living Home to teach basic tech skills to seniors.',
+    details: 'This is where Project Tech began. Ishaan runs hands-on sessions with seniors, covering internet use, email, phone setup, and digital safety. Sessions are free and run every other week.',
+    icon: 'M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z'
+  },
+  {
+    location: 'Tampa, FL',
+    lead: 'Abhiram Vislavath',
+    role: 'Chapter Lead',
+    status: 'Launching',
+    description: 'Currently planning tech workshops for senior communities in Central Florida.',
+    details: 'Abhiram is forming the Tampa chapter and reaching out to libraries and community centers to offer free digital help events for seniors. Launch planned for later this year.',
+    icon: 'M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z'
+  },
+  {
+    location: 'Bay Area, CA',
+    lead: 'Ayana Batra',
+    role: 'Chapter Lead',
+    status: 'Launching',
+    description: 'Preparing to bring tech literacy programs to senior communities in Northern California.',
+    details: 'Ayana is organizing the Bay Area chapter and working to partner with local spaces to host beginner-friendly tech workshops. First sessions are expected to start by the end of the year.',
+    icon: 'M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z'
+  }
+];
+---
+
+<Layout title="Our Chapters">
+  <ChaptersList />
+  <WhyStartChapter />
+</Layout>
+
+<script>
+  // Initialize Alpine.js
+  import Alpine from 'alpinejs';
+  document.addEventListener('DOMContentLoaded', () => {
+    const alpine = Alpine;
+    alpine.start();
+  });
+</script>

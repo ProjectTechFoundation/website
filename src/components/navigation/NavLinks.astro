@@ -1,40 +1,52 @@
 ---
 const navItems = [
-  { name: 'Home', href: '/' },
-  { name: 'About', href: '/about' },
-  { name: 'Programs', href: '/programs' },
-  { name: 'Get Involved', href: '/get-involved' },
+  { name: "Home", href: "/" },
+  { name: "About", href: "/about" },
+  { name: "Chapters", href: "/chapters" },
+  { name: "Get Involved", href: "/get-involved" },
   // { name: 'Events', href: '/events' },
-  { name: 'Contact', href: '/contact' },
+  { name: "Contact", href: "/contact" },
 ];
 
 const currentPath = Astro.url.pathname;
 ---
 
 <div class="hidden md:flex md:items-center md:justify-between flex-1 ml-12">
-  <div class="flex space-x-4 lg:space-x-8 justify-between w-full max-w-3xl mx-auto">
-    {navItems.map((item) => {
-      const isActive = currentPath === item.href || 
-        (item.href !== '/' && currentPath.startsWith(item.href));
-      
-      return (
-        <a
-          href={item.href}
-          class:list={[
-            "inline-flex items-center px-1 pt-1 text-lg font-medium transition-colors duration-200", // Increased text size to `text-lg`
-            isActive ? "text-primary" : "text-gray-700 hover:text-primary"
-          ]}
-        >
-          {item.name}
-        </a>
-      );
-    })}
+  <div
+    class="flex space-x-4 lg:space-x-8 justify-between w-full max-w-3xl mx-auto"
+  >
+    {
+      navItems.map((item) => {
+        const isActive =
+          currentPath === item.href ||
+          (item.href !== "/" && currentPath.startsWith(item.href));
+
+        return (
+          <a
+            href={item.href}
+            class:list={[
+              "inline-flex items-center px-1 pt-1 text-lg font-medium transition-colors duration-200", // Increased text size to `text-lg`
+              isActive ? "text-primary" : "text-gray-700 hover:text-primary",
+            ]}
+          >
+            {item.name}
+          </a>
+        );
+      })
+    }
   </div>
   <div class="ml-4 lg:ml-8">
     <a
       href="https://ko-fi.com/ishaantek"
       target="_blank"
-      class="inline-flex items-center px-4 py-2 border border-transparent text-lg font-medium rounded-md text-white bg-primary hover:bg-secondary transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary" // Updated Donate button text size to match
+      class="inline-flex items-center px-4 py-2 border border-transparent text-lg font-medium rounded-md text-white bg-primary hover:bg-secondary transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary"
+      Updated
+      Donate
+      button
+      text
+      size
+      to
+      match
     >
       Donate
     </a>
