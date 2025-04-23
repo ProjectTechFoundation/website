@@ -18,7 +18,7 @@ export default function MobileMenu() {
     <>
       <button
         type="button"
-        className="sm:hidden inline-flex items-center justify-center p-2 rounded-md text-gray-700"
+        className="md:hidden inline-flex items-center justify-center p-2 rounded-md text-gray-700"
         onClick={() => setIsOpen(true)}
       >
         <Bars3Icon className="h-6 w-6" aria-hidden="true" />
@@ -27,7 +27,7 @@ export default function MobileMenu() {
       <Transition show={isOpen} as={Fragment}>
         <Dialog
           onClose={() => setIsOpen(false)}
-          className="fixed inset-0 z-50 sm:hidden"
+          className="fixed inset-0 z-50 md:hidden"
         >
           <Transition.Child
             as={Fragment}
@@ -50,7 +50,7 @@ export default function MobileMenu() {
             leaveFrom="opacity-100 scale-100"
             leaveTo="opacity-0 scale-95"
           >
-            <div className="fixed inset-y-0 right-0 w-full max-w-sm bg-white p-6 shadow-xl">
+            <div className="fixed inset-0 bg-white bg-opacity-95 backdrop-blur-sm p-6 flex flex-col">
               <div className="flex items-center justify-between">
                 <img
                   src="/logo-banner.png"
@@ -59,33 +59,31 @@ export default function MobileMenu() {
                 />
                 <button
                   type="button"
-                  className="rounded-md text-gray-400 hover:text-gray-500"
+                  className="rounded-md text-gray-700 hover:text-primary transition-colors duration-200"
                   onClick={() => setIsOpen(false)}
                 >
                   <XMarkIcon className="h-6 w-6" aria-hidden="true" />
                 </button>
               </div>
-              <nav className="mt-6">
-                <div className="flex flex-col space-y-4">
-                  {navigation.map((item) => (
-                    <a
-                      key={item.name}
-                      href={item.href}
-                      className="text-base font-medium text-gray-900 hover:text-primary"
-                      onClick={() => setIsOpen(false)}
-                    >
-                      {item.name}
-                    </a>
-                  ))}
+              <nav className="mt-10 flex flex-col items-center space-y-6 flex-1 justify-center">
+                {navigation.map((item) => (
                   <a
-                    href="https://ko-fi.com/ishaantek"
-                    target="_blank"
-                    className="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md text-white bg-primary hover:bg-secondary"
+                    key={item.name}
+                    href={item.href}
+                    className="text-2xl font-semibold text-gray-900 hover:text-primary transition-colors duration-200"
                     onClick={() => setIsOpen(false)}
                   >
-                    Donate
+                    {item.name}
                   </a>
-                </div>
+                ))}
+                <a
+                  href="https://ko-fi.com/ishaantek"
+                  target="_blank"
+                  className="mt-6 inline-flex items-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-primary hover:bg-secondary transition-colors duration-200"
+                  onClick={() => setIsOpen(false)}
+                >
+                  Donate
+                </a>
               </nav>
             </div>
           </Transition.Child>
