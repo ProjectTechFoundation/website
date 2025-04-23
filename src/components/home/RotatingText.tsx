@@ -46,7 +46,7 @@ export default function RotatingText() {
     <div className="h-20 sm:h-24 flex items-center justify-center lg:justify-start">
       <span className="text-xl sm:text-2xl md:text-3xl text-blue-100 font-medium">
         {currentText}
-        <span className="inline-block w-1 h-6 bg-blue-100 ml-1 animate-pulse"></span>
+        <span className="inline-block w-0.5 h-8 bg-blue-100 ml-1 animate-pulse"></span>
       </span>
     </div>
   );
